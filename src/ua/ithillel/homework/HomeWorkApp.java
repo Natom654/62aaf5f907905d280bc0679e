@@ -15,8 +15,9 @@ public class HomeWorkApp {
 
     // task2
     public static void printThreeWords() {
-        String ThreeWords = "Orange\nBanana\nApple";
-        System.out.println(ThreeWords);
+        System.out.println("Orange");
+        System.out.println("Banan");
+        System.out.println("Apple");
     }
 
     // task3
@@ -55,7 +56,8 @@ public class HomeWorkApp {
 
     // task6
     static boolean checkNumbers(int t, int s) {
-        if ((t + s) >= 10 && (t + s) <= 20) {
+        int sum= t+s;
+        if (sum >= 10 && sum <= 20) {
             return true;
         } else {
             return false;
