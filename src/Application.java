@@ -20,7 +20,7 @@ public class Application {
         cat2.run(210);
         cat2.swim(10);
 
-        int countanimal = dog1.countdog + cat1.countcat;
-        System.out.println("Animals -" + countanimal + "; Dogs - " + "  " + dog1.countdog + "; Cats -  " + cat1.countcat);
+       int countanimal = dog1.countdog + cat1.countcat;
+        System.out.println("Animals -" + countanimal+ "; Dogs - " + "  " + dog1.countdog + "; Cats -  " + cat1.countcat);
     }
 }

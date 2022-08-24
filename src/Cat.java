@@ -1,7 +1,7 @@
 public class Cat extends Animal {
 
-    protected static int countcat = 0;
-    protected  int maxrundistance = 200;
+    public static int countcat = 0;
+    public  int maxrundistance = 200;
 
     public Cat(String name) {
         super(name);
@@ -13,10 +13,10 @@ public class Cat extends Animal {
         int restrun = maxrundistance - rundistance;
         if (rundistance > maxrundistance) {
             System.out.println(name + "  can not run so long");
-        } else
-        System.out.println(name + " is running " + rundistance + " meters" + ", left to run " + restrun + " meters");
+        } else {
+            System.out.println(name + " is running " + rundistance + " meters" + ", left to run " + restrun + " meters");
+        }
     }
-
     @Override
     public void swim(int swimdistance) {
         System.out.println(name + " can not swim ");
