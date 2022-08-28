@@ -19,7 +19,7 @@ public class Wall implements Obstacle {
             System.out.println(participant.getName() + " jump " + participant.jumpdistance() + "meters of " + title);
             return true;
         } else {
-            System.out.println(participant.getName() + " does not jump " + hight + "meters of " + title + " .He jump only " + participant.rundistance());
+            System.out.println(participant.getName() + " does not jump " + hight + "meters of " + title + " .He jump only " + participant.jumpdistance());
         }
         return false;
     }

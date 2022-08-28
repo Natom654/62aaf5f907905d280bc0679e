@@ -1,8 +1,8 @@
 package ua.ithillel.homework.race;
 
 public class Cat extends Participant {
-    private static int rundistance = 1000;
-    private static int jumpdistance = 15;
+    private static int rundistance;
+    private static int jumpdistance;
 
     public Cat(String name, int rundistance, int jumpdistance) {
         super(name);
