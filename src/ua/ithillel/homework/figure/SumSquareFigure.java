@@ -1,12 +1,6 @@
 package ua.ithillel.homework.figure;
 
-import java.lang.reflect.Array;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class SumSquareFigures {
+public class SumSquareFigure {
     public static void main(String[] args) {
         Circle c1 = new Circle(25);
         Triangle t1 = new Triangle(12.5, 10);
