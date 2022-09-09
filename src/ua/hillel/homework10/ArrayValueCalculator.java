@@ -15,9 +15,10 @@ public class ArrayValueCalculator {
                     sum += Integer.parseInt(arraystring[i][j]);
                 } catch (NumberFormatException e) {
                     throw new ArrayDataException(i, j);
+                } catch (Exception e) {
+                    throw new RuntimeException("Something went wrong during summing", e);
                 }
             }
-        }
-        return sum;
+        } return sum;
     }
 }
