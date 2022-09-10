@@ -2,7 +2,7 @@ package ua.hillel.homework10;
 
 public class Application {
 
-    public static void main(String[] args) throws ArrayDataException, ArrayCizeException {
+    public static void main(String[] args) throws Throwable,ArrayDataException, ArrayCizeException {
 
         String[][] arraystring = {
                 {"1", "2", "3", "4"},
@@ -13,7 +13,7 @@ public class Application {
 
         String[][] arraystring2 = {
                 {"1", "2", "3", "4"},
-                {"о", "6", "7", "8"},
+                {"g", "6", "7", "8"},
                 {"10", "11", "12", "13", "20"},
                 {"14", "15", "16", "17"}
         };

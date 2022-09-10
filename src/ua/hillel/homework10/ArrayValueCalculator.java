@@ -1,7 +1,7 @@
 package ua.hillel.homework10;
 
 public class ArrayValueCalculator {
-    public static int doCalc(String[][] arraystring) throws ArrayCizeException, ArrayDataException {
+    public static int doCalc(String[][] arraystring) throws Throwable,ArrayDataException, ArrayCizeException {
         int sum = 0;
 
         if (arraystring.length != 4)
@@ -14,11 +14,10 @@ public class ArrayValueCalculator {
                 try {
                     sum += Integer.parseInt(arraystring[i][j]);
                 } catch (NumberFormatException e) {
-                    throw new ArrayDataException(i, j);
-                } catch (Exception e) {
-                    throw new RuntimeException("Something went wrong during summing", e);
+                    throw new ArrayDataException(i, j).initCause(e);
                 }
             }
-        } return sum;
+        }
+        return sum;
     }
 }
