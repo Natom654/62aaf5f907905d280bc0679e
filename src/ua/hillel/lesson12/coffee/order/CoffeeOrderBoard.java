@@ -3,21 +3,23 @@ package ua.hillel.lesson12.coffee.order;
 import java.util.*;
 
 public class CoffeeOrderBoard {
-    private static int orderCount = 0;
-    private Queue<Order> orderboard = new ArrayDeque<>();
+    private int orderCount;
+    private Deque<Order> orderboard = new ArrayDeque<>();
 
-    public void add(Order order) {
-        orderCount += 1;
-        order.setNumber(orderCount);
-        this.orderboard.offer(order);
+    public void add(String name) {
+        orderboard.addLast(new Order(++orderCount, name));
     }
 
-    public void deliver() {
-        System.out.println(this.orderboard.poll());
+    public Order deliver() {
+        return orderboard.removeFirst();
     }
 
-    public void deliver(int numberOrder) {
-        System.out.println(this.orderboard.remove(numberOrder));
+    public Order deliver(int numberOrder) {
+        orderboard.stream()
+                .filter(order -> order.getNumberOrder() == numberOrder)
+                .findFirst()
+                .orElseThrow();
+        return orderboard.removeFirst();
     }
 
     public void draw() {

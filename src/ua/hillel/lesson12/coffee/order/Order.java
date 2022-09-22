@@ -4,12 +4,13 @@ public class Order {
     private int numberOrder;
     private String nameVisitor;
 
-    public Order(String nameVisitor) {
+    public Order(int numberOrder, String nameVisitor) {
+        this.numberOrder = numberOrder;
         this.nameVisitor = nameVisitor;
     }
 
-    public void setNumber(int number) {
-        this.numberOrder = number;
+    public int getNumberOrder() {
+        return numberOrder;
     }
 
     @Override
