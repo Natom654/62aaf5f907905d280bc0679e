@@ -1,9 +1,6 @@
 package ua.hillel.homework;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -24,7 +21,7 @@ public class Application {
         System.out.println(searchBook(searchList));
         System.out.println(searchBookDiscount(searchList, "Book"));
         System.out.println(findcheap(searchList, "Book"));
-        // System.out.println(findcheap(searchList, "note"));
+        System.out.println(findcheap(searchList, "note"));
         System.out.println(threeLastProducts(searchList));
         System.out.println("Summ of all Products 2022 year - " + summaryOfproducts(searchList, "Book"));
         System.out.println(MapOfProducts(searchList));
@@ -43,16 +40,13 @@ public class Application {
                 .toList();
     }
 
-    public static Product2 findcheap(List<Product2> listofproducts, String type) throws Throwable {
-        try {
-            return listofproducts.stream()
-                    .filter(product2 -> (product2.getType().equals(type)))
-                    .min(Comparator.comparing(Product2::getPrice))
-                    .get();
-        } catch (RuntimeException e) {
-            throw new UnfinedType(type).initCause(e);
-        }
+    public static Product2 findcheap(List<Product2> listofproducts, String type)  {
+        return listofproducts.stream()
+                .filter(product2 -> (product2.getType().equals(type)))
+                .min(Comparator.comparing(Product2::getPrice))
+                .orElseThrow(() -> new NoSuchElementException(type + "- type was not found"));
     }
+
 
     public static List<Product2> threeLastProducts(List<Product2> listofproducts) {
         return listofproducts.stream()
