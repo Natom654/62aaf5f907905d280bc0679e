@@ -28,6 +28,9 @@
         <maven.compiler.target>17</maven.compiler.target>
         <version.org.projectlombok>1.18.24</version.org.projectlombok>
         <version.org.junit.jupiter>5.9.1</version.org.junit.jupiter>
+        <version.org.apache.maven.plugins>3.0.0-M7</version.org.apache.maven.plugins>
+        <user.name>Natalia</user.name>
+        <user.surname>Omelchenko</user.surname>
     </properties>
 
     <packaging>jar</packaging>
@@ -52,12 +55,12 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>${project.artifactId}-${user.name}-${project.version}</finalName>
+        <finalName>${project.artifactId}-${user.name}-${user.surname}-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
+                <version>${version.org.apache.maven.plugins}</version>
             </plugin>
         </plugins>
     </build>
