@@ -1,37 +1,31 @@
 package ua.ithillel.homework.petrolstation;
 
-public class MyPetrolStation implements PetrolStation, Runnable {
-    private float allFuelOnStation;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-    private final Object lock = new Object();
+public class MyPetrolStation {
 
-    public MyPetrolStation() {
-        this.allFuelOnStation = 100;
-    }
+    private float allFuelOnStation = 100F;
+    private static final Semaphore semaphore = new Semaphore(3);
+    private ReadWriteLock rwlock = new ReentrantReadWriteLock();
 
-    @Override
-    public synchronized float doRefuel(float amountFuel) throws FuelNotFoundException {
-        if (allFuelOnStation > 0 && allFuelOnStation> amountFuel) {
-            synchronized (lock) {
-                System.out.println("Filled with " + amountFuel + " liters");
-                allFuelOnStation = allFuelOnStation - amountFuel;
-                System.out.println("On PetrolStation " + allFuelOnStation + " liters");
-                notify();
-                return allFuelOnStation;
+    public void doRefuel(float amountFuel) {
+        if (allFuelOnStation > 0 && allFuelOnStation > amountFuel) {
+            try {
+                semaphore.acquire();
+                rwlock.writeLock().lock();
+                allFuelOnStation -= amountFuel;
+                System.out.println("Filled with  " + amountFuel + " liters");
+                System.out.println("On PetrolStation is " + allFuelOnStation + " liters");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                rwlock.writeLock().unlock();
+                semaphore.release();
             }
         } else {
-            throw new FuelNotFoundException("On station no fuel");
-        }
-    }
-
-    public synchronized void run() {
-        for (int i = 1; i <= 3; i++) {
-            try {
-                Thread.sleep(10000);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-            System.out.println(i);
+            throw new RuntimeException("On station no fuel");
         }
     }
 }

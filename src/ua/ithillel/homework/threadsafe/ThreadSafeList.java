@@ -1,36 +1,46 @@
 package ua.ithillel.homework.threadsafe;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.concurrent.locks.Lock;
+import java.util.ArrayList;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class ThreadSafeList implements CopyOnWriteArrayList {
-    private Object[] threadSafeList;
-    Lock lock;
+public final class ThreadSafeList<T> extends ArrayList<T> {
+    private final ReadWriteLock rwLock = new ReentrantReadWriteLock();
 
-    public boolean add(Object e) {
-        lock.lock();
+    public ThreadSafeList(int initialCapacity) {
+        super(initialCapacity);
+    }
+
+    @Override
+    public boolean add(T t) {
         try {
-            Object[] newElements = Arrays.copyOf(threadSafeList, threadSafeList.length + 1);
-            newElements[threadSafeList.length] = e;
-            threadSafeList = newElements;
-            return true;
+            rwLock.readLock().lock();
+            return super.add(t);
         } finally {
-            lock.unlock();
+            rwLock.readLock().unlock();
         }
     }
 
     @Override
-    public void remove(int index) {
+    public T remove (int index) {
+        try {
+            rwLock.readLock().lock();
+            return super.remove(index);
+        } finally {
+            rwLock.readLock().unlock();
+        }
     }
+
 
     @Override
-    public boolean get(int index) {
-        return (boolean) threadSafeList[index];
-    }
-
-    public Iterator iterator() {
-        return new COWIterator(threadSafeList);
+    public T get(int index) {
+        try {
+            rwLock.readLock().lock();
+            return super.get(index);
+        } finally {
+            rwLock.readLock().unlock();
+        }
     }
 }
+
 

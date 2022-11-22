@@ -1,11 +1,20 @@
 package ua.ithillel.homework.petrolstation;
 
 public class Application {
-    public static void main(String[] args) throws FuelNotFoundException {
+    public static void main(String[] args) {
         MyPetrolStation myPetrolStation = new MyPetrolStation();
-        Thread firstFuelThread = new Thread(String.valueOf(myPetrolStation.doRefuel(10)));
-        Thread secondFuelThread = new Thread(String.valueOf(myPetrolStation.doRefuel(20)));
-        Thread thirdFuelThread = new Thread(String.valueOf(myPetrolStation.doRefuel(145)));
+
+        Runnable refuel = () -> {
+            try {
+                Thread.currentThread().sleep(10000);
+                myPetrolStation.doRefuel(55);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        };
+        Thread firstFuelThread = new Thread(refuel);
+        Thread secondFuelThread = new Thread(refuel);
+        Thread thirdFuelThread = new Thread(refuel);
         firstFuelThread.start();
         secondFuelThread.start();
         thirdFuelThread.start();
@@ -17,6 +26,5 @@ public class Application {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 }
