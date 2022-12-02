@@ -30,12 +30,19 @@
     <version.org.junit.jupiter>5.9.1</version.org.junit.jupiter>
     <version.org.apache.maven.plugins>3.0.0-M7</version.org.apache.maven.plugins>
     <version.org.junit.platform>1.9.1</version.org.junit.platform>
+    <version.maven.war.plugin>3.3.2</version.maven.war.plugin>
+    <version.javax.servlet>4.0.1</version.javax.servlet>
     <user.name>Natalia</user.name>
     <user.surname>Omelchenko</user.surname>
   </properties>
 
   <packaging>war</packaging>
   <dependencies>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${version.javax.servlet}</version>
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
@@ -73,7 +80,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.3.2</version>
+        <version>${version.maven.war.plugin}</version>
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
