@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>ua.ithillel</groupId>
+  <artifactId>ith-62aaf5f907905d280bc0679e</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>IT Hillel School Project</name>
+  <description>Hillel IT School Project of the group ith-62aaf5f907905d280bc0679e</description>
+  <organization>
+    <name>Hillel IT School</name>
+    <url>https://ithillel.ua/</url>
+  </organization>
+  <developers>
+    <developer>
+      <name>Natalia</name>
+      <organization>Omelchenko</organization>
+      <id>natom654</id>
+      <email>natom654@gmail.com</email>
+      <organizationUrl>https://github.com/Natom654/62aaf5f907905d280bc0679e</organizationUrl>
+    </developer>
+  </developers>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <version.org.projectlombok>1.18.24</version.org.projectlombok>
+    <version.org.junit.jupiter>5.9.1</version.org.junit.jupiter>
+    <version.org.apache.maven.plugins>3.0.0-M7</version.org.apache.maven.plugins>
+    <version.org.junit.platform>1.9.1</version.org.junit.platform>
+    <version.log4j-core>2.19.0</version.log4j-core>
+    <user.name>Natalia</user.name>
+    <user.surname>Omelchenko</user.surname>
+  </properties>
+
+  <packaging>jar</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${version.org.projectlombok}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${version.org.junit.jupiter}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-console-standalone</artifactId>
+      <version>${version.org.junit.platform}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>${version.org.junit.jupiter}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${version.log4j-core}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>${project.artifactId}-${user.name}-${user.surname}-${project.version}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${version.org.apache.maven.plugins}</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>
