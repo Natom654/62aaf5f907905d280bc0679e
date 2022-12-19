@@ -18,7 +18,7 @@ create table "country"
     name  varchar(30) not null
         unique,
     population   integer     not null,
-    "mainlandID" varchar(30) not null,
+    "mainlandID" varchar(30) not null
 );
 
 alter table "country"
@@ -37,7 +37,7 @@ alter table "mainland"
 
 create table city_country
 (
-    id serial,
+    id serial  primary key,
     "cityID"    integer                                                   not null
         constraint city_country_city_id_fk
             references city
@@ -53,7 +53,7 @@ alter table city_country
 
 create table country_mainland
 (
-    id           integer  not null,
+    id   serial primary key,
     "countryID"  integer                                                       not null
         constraint country_mainland_country_id_fk
             references "country"

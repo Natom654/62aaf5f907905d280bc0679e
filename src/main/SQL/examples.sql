@@ -7,7 +7,7 @@ JOIN country c on cc."countryID" = c.id;
 
 SELECT city.name, sum(city.population) Sum_Population_City
 FROM city
-group by city.name;
+GROUP BY city.name;
 
 
 SELECT c.name, sum(city.population) Sum_Population_Country
