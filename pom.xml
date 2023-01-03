@@ -28,8 +28,9 @@
     <maven.compiler.target>17</maven.compiler.target>
     <version.org.projectlombok>1.18.24</version.org.projectlombok>
     <version.org.junit.jupiter>5.9.1</version.org.junit.jupiter>
-    <version.org.junit.platform>1.9.1</version.org.junit.platform>
     <version.org.apache.maven.plugins>3.0.0-M7</version.org.apache.maven.plugins>
+    <version.org.springframework>6.0.3</version.org.springframework>
+
     <user.name>Natalia</user.name>
     <user.surname>Omelchenko</user.surname>
   </properties>
@@ -55,10 +56,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-console-standalone</artifactId>
-      <version>${version.org.junit.platform}</version>
-      <scope>test</scope>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${version.org.springframework}</version>
     </dependency>
   </dependencies>
   <build>
