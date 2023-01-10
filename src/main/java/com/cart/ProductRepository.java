@@ -1,9 +1,8 @@
-package cart;
+package com.cart;
 
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,13 +21,13 @@ public class ProductRepository{
     }
 
 
-    public Product findById (int id) {
+    public Optional <Product> findById (int id) {
         for (Product product : productRepository) {
             if (product.getId () == id) {
-                return product;
+                return Optional.of(product);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public List <Product> getAllProducts() {

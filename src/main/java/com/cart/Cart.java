@@ -1,4 +1,4 @@
-package cart;
+package com.cart;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -16,12 +17,13 @@ import java.util.Map;
 public class Cart {
 
     ProductRepository productRepository;
-    private final Map<Product, Integer> cartMap = new HashMap<>();
+    Map<Product, Integer> cartMap = new HashMap<>();
 
     public Map<Product, Integer> getCartMap() {
         return cartMap;
     }
-    public void addProductToCart(Product product, Integer quantity) {
+
+    public void addProductToCart(Product product, int quantity) {
         if (product != null)
             cartMap.put(product, quantity);
     }
@@ -35,9 +37,12 @@ public class Cart {
             }
         }
     }
-    public void addToCartByID(int id, Integer quantity) {
-       Product product= productRepository.findById(id);
-        this.addProductToCart( product, quantity);
+
+    public void addToCartByID(int id, int quantity) {
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) {
+            product.get();
+        }
     }
 
     @Override

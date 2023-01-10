@@ -1,18 +1,12 @@
-package cart;
+package com.cart;
 
-import cart.Cart;
-import cart.Product;
-import cart.ProductRepository;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class CartApplication {
     public static void main(String[] args) {
-        var ctx = new AnnotationConfigApplicationContext("cart");
+        var ctx = new AnnotationConfigApplicationContext("com/cart");
         System.out.println(ctx.getBean(Cart.class));
 
         ProductRepository productRepository = new ProductRepository();

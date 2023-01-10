@@ -1,4 +1,4 @@
-package cart;
+package com.cart;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -8,9 +8,9 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class Product {
-    private int id = 0;
-    private String name;
-    private Float price;
+     int id;
+     String name;
+    Float price;
 
     public Product(int id, String name, Float price) {
         this.id = id;
@@ -19,7 +19,7 @@ public class Product {
     }
 
     public void setId(int id) {
-        this.id = id+1;
+        this.id = id;
     }
 
     public int getId() {
